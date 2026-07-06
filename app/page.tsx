@@ -1,65 +1,97 @@
-import Image from "next/image";
+const FEATURES = [
+  {
+    emoji: "🚀",
+    title: "Blazing Launch",
+    desc: "Ship your idea in minutes, not months. Zero config, all vibes.",
+  },
+  {
+    emoji: "🎨",
+    title: "Bold by Default",
+    desc: "Dark mode and orange sparks built in — no theme wrangling needed.",
+  },
+  {
+    emoji: "🔥",
+    title: "Actually Fun",
+    desc: "Because landing pages don't have to be boring corporate wallpaper.",
+  },
+];
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
+    <div className="relative flex flex-1 flex-col overflow-hidden bg-background">
+      <div
+        className="pointer-events-none absolute -top-24 -left-24 h-72 w-72 animate-float rounded-full bg-primary/30 blur-3xl"
+        aria-hidden
+      />
+      <div
+        className="pointer-events-none absolute top-40 right-0 h-96 w-96 animate-float-delayed rounded-full bg-primary/20 blur-3xl"
+        aria-hidden
+      />
+
+      <nav className="relative z-10 flex items-center justify-between px-8 py-6 sm:px-16">
+        <span className="text-xl font-black tracking-tight text-foreground">
+          🔶 Blastoff
+        </span>
+        <a
+          href="#get-started"
+          className="rounded-full border border-card-border px-4 py-2 text-sm font-semibold text-foreground transition-colors hover:border-primary hover:text-primary"
+        >
+          Get Started
+        </a>
+      </nav>
+
+      <main className="relative z-10 flex flex-1 flex-col items-center justify-center px-8 py-20 text-center sm:px-16">
+        <span className="mb-6 rounded-full border border-primary/40 bg-primary/10 px-4 py-1 text-sm font-medium text-primary">
+          ✨ now with 100% more orange
+        </span>
+
+        <h1 className="max-w-3xl text-5xl font-black leading-tight tracking-tight text-foreground sm:text-7xl">
+          Build something{" "}
+          <span className="text-primary">loud, bright</span> and fun.
+        </h1>
+
+        <p className="mt-6 max-w-xl text-lg text-foreground/70 sm:text-xl">
+          A tiny playground landing page — dark background, orange energy,
+          zero seriousness required.
+        </p>
+
+        <div
+          id="get-started"
+          className="mt-10 flex flex-col gap-4 sm:flex-row"
+        >
           <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="#"
+            className="rounded-full bg-primary px-8 py-3 text-base font-bold text-primary-foreground shadow-[0_0_40px_-10px] shadow-primary transition-transform hover:scale-105"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
+            Launch Now 🚀
           </a>
           <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="#"
+            className="rounded-full border border-card-border px-8 py-3 text-base font-bold text-foreground transition-colors hover:border-primary hover:text-primary"
           >
-            Documentation
+            See it in action
           </a>
         </div>
+
+        <section className="mt-24 grid w-full max-w-4xl gap-6 sm:grid-cols-3">
+          {FEATURES.map((f) => (
+            <div
+              key={f.title}
+              className="rounded-2xl border border-card-border bg-card p-6 text-left transition-transform hover:-translate-y-1 hover:border-primary/60"
+            >
+              <div className="text-3xl">{f.emoji}</div>
+              <h3 className="mt-4 text-lg font-bold text-foreground">
+                {f.title}
+              </h3>
+              <p className="mt-2 text-sm text-foreground/60">{f.desc}</p>
+            </div>
+          ))}
+        </section>
       </main>
+
+      <footer className="relative z-10 px-8 py-8 text-center text-sm text-foreground/40 sm:px-16">
+        Made with 🧡 for the fun of it.
+      </footer>
     </div>
   );
 }
